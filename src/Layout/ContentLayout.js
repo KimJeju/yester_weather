@@ -21,8 +21,8 @@ const WeatherBoxContainer = styled.div`
     flex-direction: column;
     align-items : center;
 
-    width : 19vw;
-    height : 22vh;
+    width : 400px;
+    height : 210px;
     background-color : blue;
 
     margin-top : 1vw;

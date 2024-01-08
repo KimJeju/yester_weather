@@ -1,8 +1,16 @@
+@font-face {
+  font-family: "WantedSans-Regular";
+  font-weight: 50;
+  src: url("./Fonts/WantedSans-Regular.ttf") format("truetype");
+}
+
+
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100dvh;
+  font-family: "WantedSans-Regular";
 }
 
 
