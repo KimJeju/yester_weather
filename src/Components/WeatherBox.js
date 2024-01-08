@@ -35,7 +35,7 @@ function WeatherBox() {
         })
     }, []);
 
-    const getWeather = async (lat, lon) => {
+    const getWeather = async  (lat, lon) => {
         try {
             const res = await axios.get(
                 `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${"minutely ,hourly ,alerts ,hourly"}&appid=${API_KEY}&units=metric`
@@ -70,17 +70,17 @@ function WeatherBox() {
         }
     }
 
-    console.log(weather);
-
-    if(weather != null){
+    if (weather != null) {
         return (
-            <Container>
-                <div>
-                    a
-                </div>
-            </Container>
-    
-        )    
+            <div>
+                <Container>
+                    <div>
+                        a
+                    </div>
+                </Container>
+            </div>
+
+        )
     }
 };
 

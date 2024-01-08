@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import WeatherBox from "../Components/WeatherBox";
+import { useEffect, useState } from "react";
 
 
 const ContentForm = styled.div`
@@ -14,33 +15,74 @@ const ContentForm = styled.div`
     height : 100vh;
 `
 
-
-
 const WeatherBoxContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items : center;
 
     width : 400px;
-    height : 210px;
     background-color : blue;
 
     margin-top : 1vw;
 `
 
+const MyLocation = styled.div`
+    display : flex;
+    flex-direction : column;
+    width : 350px;
+    margin-top : 10px;
+`
+
+const MyLocations = styled.div`
+    // display : flex;
+    // justify-content : space-around;
+`
+
+const LocationTitle = styled.span`
+    font-size : 20px;
+    font-weight : bold;
+`
+
 function ContentLayout() {
 
-    return (
-        <ContentForm>
-            <WeatherBoxContainer>
-                <WeatherBox />
+    const [location, setLocation] = useState(null);
 
-                <br />
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            // let lat = Math.floor(position.coords.latitude).toString();
+            // let lon = Math.floor(position.coords.longitude).toString();
 
-                <WeatherBox />
-            </WeatherBoxContainer>
-        </ContentForm>
-    )
+            let lat = position.coords.latitude.toString();
+            let lon = position.coords.longitude.toString();
+
+            setLocation({
+                lat: lat,
+                lon: lon
+            })
+        })
+    }, []);
+
+    if (location != null) {
+        return (
+            <ContentForm>
+                <MyLocation>
+                    <LocationTitle>현재 내 위치</LocationTitle>
+                    <MyLocations>
+                        <span>위도 : {location.lat}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>경도 : {location.lon}</span>
+                    </MyLocations>
+                </MyLocation>
+                <WeatherBoxContainer>
+                    <WeatherBox />
+
+                    <br />
+
+                    <WeatherBox />
+                </WeatherBoxContainer>
+            </ContentForm>
+        )
+
+    }
 }
 
 export default ContentLayout
