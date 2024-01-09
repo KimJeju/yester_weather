@@ -1,13 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
+import moment from "moment";
 
-const Container = styled.div`
-    width : 350px;
-    height : 100px;
-    background-color : red;
-    transition : 0.5s;
-`
+
 
 const MyLocation = styled.div`
 
@@ -19,10 +16,12 @@ function PastWeatherBox() {
 
     const [weather, setWeather] = useState(null);
 
-    var now = new Date();
-    var oneYearAgo = new Date(now.setFullYear(now.getFullYear() - 1));	// 일년 전
+    let now = new Date();
+    let oneYearAgo = new Date(now.setFullYear(now.getFullYear() - 1));	// 일년 전
     //1년전 유닉스 타임으로 변환
     let time = Math.floor(oneYearAgo / 1000);
+
+    let oneYearAgoTime = moment(oneYearAgo).format(`YYYY년 MM월 DD일`)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -53,24 +52,18 @@ function PastWeatherBox() {
                 icon: weatherIconAdrs,
                 dewPoint: res.data.data[0].dew_point,
                 sunrise: res.data.data[0].sunrise,
-                sunset: res.data.data[0].sunset
+                sunset: res.data.data[0].sunset,
+                date : oneYearAgoTime
             });
         } catch (err) {
             console.error(err);
         }
     }
 
-    console.log(weather);
-
-
     if (weather != null) {
         return (
             <div>
-                <Container>
-                    <div>
-                        a
-                    </div>
-                </Container>
+               <WeatherBoxLayout  weather={weather}/>
             </div>
 
         )

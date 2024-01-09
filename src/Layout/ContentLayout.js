@@ -9,8 +9,8 @@ const ContentForm = styled.div`
     flex-direction: column;
     align-items : center;
 
-    background-color : rgba( 0, 0, 0, 0.04) ;
-
+    background-color : rgba( 255, 239, 223, 0.5) ;
+    // background-color : #F8ECE0 ;
 
     width : 400px;
     height : 100vh;
@@ -22,21 +22,21 @@ const WeatherBoxContainer = styled.div`
     align-items : center;
 
     width : 400px;
-    background-color : blue;
 
-    margin-top : 1vw;
+    margin-top : 2vw;
 `
 
 const MyLocation = styled.div`
     display : flex;
     flex-direction : column;
     width : 350px;
-    margin-top : 10px;
+    margin-top : 12px;
 `
 
 const MyLocations = styled.div`
     // display : flex;
     // justify-content : space-around;
+    margin-top : 1vh;
 `
 
 const LocationTitle = styled.span`

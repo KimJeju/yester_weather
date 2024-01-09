@@ -1,17 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
+import moment from "moment";
 
-const Container = styled.div`
-    width : 350px;
-    height : 100px;
-    background-color : red;
-    transition : 0.5s;
-`
-
-const MyLocation = styled.div`
-
-`
 
 function CurrentWeatherBox() {
 
@@ -20,6 +12,8 @@ function CurrentWeatherBox() {
     const [weather, setWeather] = useState(null);
     const [city, setCity] = useState(null);
 
+    let date = new Date();
+    const nowTime = moment().format(`YYYY년 MM월 DD일`);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -47,6 +41,7 @@ function CurrentWeatherBox() {
             // // 소수점 버리기
             // const temp = Math.round(res.data.main.temp);
 
+
             setWeather({
                 main: res.data.current.weather[0].main,
                 description: res.data.current.weather[0].description,
@@ -55,7 +50,8 @@ function CurrentWeatherBox() {
                 icon: weatherIconAdrs,
                 dewPoint: res.data.current.dew_point,
                 sunrise: res.data.current.sunrise,
-                sunset: res.data.current.sunset
+                sunset: res.data.current.sunset,
+                date : nowTime,
             });
         } catch (err) {
             console.error(err);
@@ -65,13 +61,8 @@ function CurrentWeatherBox() {
     if (weather != null) {
         return (
             <div>
-                <Container>
-                    <div>
-                        a
-                    </div>
-                </Container>
+                <WeatherBoxLayout weather={weather}/>
             </div>
-
         )
     }
 };
