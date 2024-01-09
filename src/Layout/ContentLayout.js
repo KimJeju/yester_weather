@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import WeatherBox from "../Components/WeatherBox";
 import { useEffect, useState } from "react";
+import CurrentWeatherBox from "../Components/CurrentWeatherBox";
+import PastWeatherBox from "../Components/PastWeatherBox";
 
 
 const ContentForm = styled.div`
@@ -73,11 +74,11 @@ function ContentLayout() {
                     </MyLocations>
                 </MyLocation>
                 <WeatherBoxContainer>
-                    <WeatherBox />
+                    <CurrentWeatherBox />
 
                     <br />
 
-                    <WeatherBox />
+                    <PastWeatherBox />
                 </WeatherBoxContainer>
             </ContentForm>
         )

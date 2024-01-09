@@ -13,7 +13,7 @@ const MyLocation = styled.div`
 
 `
 
-function WeatherBox() {
+function CurrentWeatherBox() {
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -23,13 +23,9 @@ function WeatherBox() {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
-            // let lat = Math.floor(position.coords.latitude).toString();
-            // let lon = Math.floor(position.coords.longitude).toString();
-
+        
             let lat = position.coords.latitude.toString();
             let lon = position.coords.longitude.toString();
-
-
 
             getWeather(lat, lon);
         })
@@ -52,8 +48,6 @@ function WeatherBox() {
             // const temp = Math.round(res.data.main.temp);
 
             setWeather({
-                lat: lat,
-                lon: lon,
                 main: res.data.current.weather[0].main,
                 description: res.data.current.weather[0].description,
                 feelLike: res.data.current.feels_like,
@@ -63,8 +57,6 @@ function WeatherBox() {
                 sunrise: res.data.current.sunrise,
                 sunset: res.data.current.sunset
             });
-
-            // console.log(weather)
         } catch (err) {
             console.error(err);
         }
@@ -87,4 +79,4 @@ function WeatherBox() {
 
 
 
-export default WeatherBox
+export default CurrentWeatherBox
