@@ -4,9 +4,7 @@ import MainLayout from './Layout/MainLayout';
 function App() {
   return (
     <div className="App">
-      <MainLayout>
-
-      </MainLayout>
+      <MainLayout />
     </div>
   );
 }
