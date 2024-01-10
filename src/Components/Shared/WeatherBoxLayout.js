@@ -69,7 +69,6 @@ const RightContent = styled.div`
 `
 
 function WeatherBoxLayout({ weather }) {
-
     return (
         <Container>
             <LeftContent>

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
 import moment from "moment";
+import LoadingBox from "./Shared/LoadingBox";
 
 
 function CurrentWeatherBox() {
@@ -10,14 +10,14 @@ function CurrentWeatherBox() {
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
     const [weather, setWeather] = useState(null);
-    const [city, setCity] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     let date = new Date();
     const nowTime = moment().format(`YYYY년 MM월 DD일`);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
-        
+
             let lat = position.coords.latitude.toString();
             let lon = position.coords.longitude.toString();
 
@@ -25,7 +25,7 @@ function CurrentWeatherBox() {
         })
     }, []);
 
-    const getWeather = async  (lat, lon) => {
+    const getWeather = async (lat, lon) => {
         try {
             const res = await axios.get(
                 `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${"minutely ,hourly ,alerts ,hourly"}&appid=${API_KEY}&units=metric`
@@ -51,8 +51,12 @@ function CurrentWeatherBox() {
                 dewPoint: res.data.current.dew_point,
                 sunrise: res.data.current.sunrise,
                 sunset: res.data.current.sunset,
-                date : nowTime,
+                date: nowTime,
             });
+
+            if (weather != null) {
+                setLoading(false);
+            }
         } catch (err) {
             console.error(err);
         }
@@ -61,10 +65,15 @@ function CurrentWeatherBox() {
     if (weather != null) {
         return (
             <div>
-                <WeatherBoxLayout weather={weather}/>
+                <WeatherBoxLayout weather={weather} />
             </div>
         )
+    } else {
+        return (
+            <LoadingBox />
+        )
     }
+
 };
 
 

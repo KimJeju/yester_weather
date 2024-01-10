@@ -14,6 +14,8 @@ const ContentForm = styled.div`
 
     width : 400px;
     height : 100vh;
+
+    transiton : 1s;
 `
 
 const WeatherBoxContainer = styled.div`

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
 import moment from "moment";
+import LoadingBox from "./Shared/LoadingBox";
 
 
 
@@ -59,13 +60,16 @@ function PastWeatherBox() {
             console.error(err);
         }
     }
-
+    
     if (weather != null) {
         return (
             <div>
-               <WeatherBoxLayout  weather={weather}/>
+                <WeatherBoxLayout weather={weather} />
             </div>
-
+        )
+    } else {
+        return (
+            <LoadingBox />
         )
     }
 };
