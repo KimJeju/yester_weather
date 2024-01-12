@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export const currentWeatherSlice = createSlice({
+export const weatherSlice = createSlice({
     name: "weather",
     initialState: {
         value: {}
@@ -13,6 +13,6 @@ export const currentWeatherSlice = createSlice({
     }
 })
 
-export const { getCurrentWeather } = currentWeatherSlice.actions
+export const { getCurrentWeather } = weatherSlice.actions
 
-export default currentWeatherSlice.reducer
+export default weatherSlice.reducer

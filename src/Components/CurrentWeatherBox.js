@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
 import moment from "moment";
-import LoadingBox from "./Shared/LoadingBox";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { getCurrentWeather } from "../Reducers/Features/weatherSlice";
 
 function CurrentWeatherBox() {
 
@@ -11,6 +10,10 @@ function CurrentWeatherBox() {
 
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const currentWeather = useSelector(state => state.weather.value);
+    const dispatch = useDispatch();
+
 
     let date = new Date();
     const nowTime = moment().format(`YYYY년 MM월 DD일`);
@@ -41,7 +44,6 @@ function CurrentWeatherBox() {
             // // 소수점 버리기
             // const temp = Math.round(res.data.main.temp);
 
-
             setWeather({
                 main: res.data.current.weather[0].main,
                 description: res.data.current.weather[0].description,
@@ -54,6 +56,10 @@ function CurrentWeatherBox() {
                 date: nowTime,
             });
 
+            dispatch(getCurrentWeather(weather));
+
+            console.log(currentWeather);
+
             if (weather != null) {
                 setLoading(false);
             }
@@ -62,17 +68,17 @@ function CurrentWeatherBox() {
         }
     }
 
-    if (weather != null) {
-        return (
-            <div>
-                <WeatherBoxLayout weather={weather} />
-            </div>
-        )
-    } else {
-        return (
-            <LoadingBox />
-        )
-    }
+    // if (weather != null) {
+    //     return (
+    //         <div>
+    //             <WeatherBoxLayout weather={weather} />
+    //         </div>
+    //     )
+    // } else {
+    //     return (
+    //         <LoadingBox />
+    //     )
+    // }
 
 };
 
