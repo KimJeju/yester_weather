@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import CurrentWeatherBox from "../Components/CurrentWeatherBox";
+import CurrentWeatherBox from "../Components/Utils/CurrentWeather";
 import PastWeatherBox from "../Components/PastWeatherBox";
+import { useSelector } from "react-redux";
 
 
 const ContentForm = styled.div`
@@ -50,6 +51,7 @@ function ContentLayout() {
 
     const [location, setLocation] = useState(null);
 
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             // let lat = Math.floor(position.coords.latitude).toString();
@@ -63,6 +65,7 @@ function ContentLayout() {
                 lon: lon
             })
         })
+
     }, []);
 
     if (location != null) {
