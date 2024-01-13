@@ -37,7 +37,7 @@ function PastWeather() {
             getWeather(lat, lon);
         })
 
-    }, []);
+    }, [weather]);
 
     const getWeather = async  (lat, lon) => {
         try {
@@ -67,6 +67,7 @@ function PastWeather() {
     }
 
     if(weather != null){
+
         dispatch(getPastWeather(weather));
 
         return weather;

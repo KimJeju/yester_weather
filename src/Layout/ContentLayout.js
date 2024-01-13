@@ -25,7 +25,7 @@ const WeatherBoxContainer = styled.div`
 
     width : 400px;
 
-    margin-top : 2vw;
+    margin-top : 1vh;
 `
 
 const MyLocation = styled.div`
@@ -70,7 +70,7 @@ function ContentLayout() {
 
     }, []);
 
-    if (location != null && currentWeather != undefined && pastWeather != undefined) {
+    if (location != null && currentWeather !== undefined && pastWeather !== undefined) {
         return (
             <ContentForm>
                 <MyLocation>
@@ -82,9 +82,7 @@ function ContentLayout() {
                 </MyLocation>
                 <WeatherBoxContainer>
                     <WeatherBoxLayout weather={currentWeather} />
-
                     <br />
-                    
                     <WeatherBoxLayout weather={pastWeather} />
                 </WeatherBoxContainer>
             </ContentForm>

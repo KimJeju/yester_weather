@@ -24,7 +24,7 @@ function CurrentWeatherBox() {
 
             getWeather(lat, lon);
         })
-    }, []);
+    }, [weather]);
 
     const getWeather = async (lat, lon) => {
             try {

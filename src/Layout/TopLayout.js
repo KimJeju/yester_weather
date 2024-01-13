@@ -8,7 +8,6 @@ const TopForm = styled.div`
 
 const TitleContainer = styled.div`
     width : 400px;
-    height : 5vh;
     margin-top : 50px;
     vertical-align: bottom;
 `
