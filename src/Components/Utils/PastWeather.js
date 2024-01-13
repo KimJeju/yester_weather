@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import WeatherBoxLayout from "./Shared/WeatherBoxLayout";
+import WeatherBoxLayout from "../Shared/WeatherBoxLayout";
 import moment from "moment";
-import LoadingBox from "./Shared/LoadingBox";
+import LoadingBox from "../Shared/LoadingBox";
+import { useDispatch } from "react-redux";
+import { getPastWeather } from "../../Reducers/Features/pastWeatherSlice";
 
 
 
@@ -11,18 +13,20 @@ const MyLocation = styled.div`
 
 `
 
-function PastWeatherBox() {
+function PastWeather() {
+
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
     const [weather, setWeather] = useState(null);
+    const dispatch = useDispatch();
 
-    let now = new Date();
-    let oneYearAgo = new Date(now.setFullYear(now.getFullYear() - 1));	// 일년 전
+    const now = new Date();
+    const oneYearAgo = new Date(now.setFullYear(now.getFullYear() - 1));	// 일년 전
     //1년전 유닉스 타임으로 변환
-    let time = Math.floor(oneYearAgo / 1000);
+    const time = Math.floor(oneYearAgo / 1000);
 
-    let oneYearAgoTime = moment(oneYearAgo).format(`YYYY년 MM월 DD일`)
+    const oneYearAgoTime = moment(oneYearAgo).format(`YYYY년 MM월 DD일`)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -32,6 +36,7 @@ function PastWeatherBox() {
 
             getWeather(lat, lon);
         })
+
     }, []);
 
     const getWeather = async  (lat, lon) => {
@@ -60,21 +65,15 @@ function PastWeatherBox() {
             console.error(err);
         }
     }
-    
-    if (weather != null) {
-        return (
-            <div>
-                <WeatherBoxLayout weather={weather} />
-            </div>
-        )
-    } else {
-        return (
-            <LoadingBox />
-        )
+
+    if(weather != null){
+        dispatch(getPastWeather(weather));
+
+        return weather;
     }
 };
 
 
 
 
-export default PastWeatherBox
+export default PastWeather

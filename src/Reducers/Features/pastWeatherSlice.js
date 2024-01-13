@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export const weatherSlice = createSlice({
-    name: "weather",
+export const pastWeatherSlice = createSlice({
+    name: "pastWeather",
     initialState: {
         value: []
     },
     reducers: {
-        getCurrentWeather: (state, action) => {
+        getPastWeather: (state, action) => {
             if(state.value.length === 0){    
                 state.value.push(action.payload);
             }
@@ -15,6 +15,6 @@ export const weatherSlice = createSlice({
     }
 })
 
-export const { getCurrentWeather } = weatherSlice.actions
+export const { getPastWeather } = pastWeatherSlice.actions
 
-export default weatherSlice.reducer
+export default pastWeatherSlice.reducer

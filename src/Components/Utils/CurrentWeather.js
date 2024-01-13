@@ -53,10 +53,6 @@ function CurrentWeatherBox() {
                     sunset: res.data.current.sunset,
                     date: nowTime,
                 });
-
-                if (weather != null) {
-                    setLoading(false);
-                }
             } catch (err) {
                 console.error(err);
             }
@@ -64,6 +60,8 @@ function CurrentWeatherBox() {
 
     if(weather != null){
         dispatch(getCurrentWeather(weather));
+
+        return weather;
     }
 };
 

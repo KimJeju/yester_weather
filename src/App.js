@@ -1,18 +1,28 @@
-import { useSelector } from 'react-redux';
 import './App.css';
-import { Counter } from './Components/Utils/Counter';
 import MainLayout from './Layout/MainLayout';
-import CurrentWeatherBox from './Components/Utils/CurrentWeather';
+import CurrentWeather from './Components/Utils/CurrentWeather';
+import LoadingBox from './Components/Shared/LoadingBox';
+import PastWeather from './Components/Utils/PastWeather';
 
 function App() {
 
-  CurrentWeatherBox();
+  const curWeather = CurrentWeather();
 
-  return (
-    <div className="App">
-      <MainLayout />
-    </div>
-  );
+  const pastWeather = PastWeather();
+
+  if (curWeather === undefined && pastWeather === undefined) {
+    return (<div className="App">
+      <LoadingBox />
+    </div>)
+  } else{
+    return (
+      <div className="App">
+        <MainLayout />
+      </div>
+    )
+  }
+  
+
 }
 
 export default App;

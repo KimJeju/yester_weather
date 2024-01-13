@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import CurrentWeatherBox from "../Components/Utils/CurrentWeather";
-import PastWeatherBox from "../Components/PastWeatherBox";
 import { useSelector } from "react-redux";
+import WeatherBoxLayout from "../Components/Shared/WeatherBoxLayout";
 
 
 const ContentForm = styled.div`
@@ -16,7 +15,7 @@ const ContentForm = styled.div`
     width : 400px;
     height : 100vh;
 
-    transiton : 1s;
+    transiton : 0.5s;
 `
 
 const WeatherBoxContainer = styled.div`
@@ -51,6 +50,9 @@ function ContentLayout() {
 
     const [location, setLocation] = useState(null);
 
+    const currentWeather = useSelector(state => state.weather.value[0]);
+
+    const pastWeather = useSelector(state => state.pastWeather.value[0]);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -68,7 +70,7 @@ function ContentLayout() {
 
     }, []);
 
-    if (location != null) {
+    if (location != null && currentWeather != undefined && pastWeather != undefined) {
         return (
             <ContentForm>
                 <MyLocation>
@@ -79,11 +81,11 @@ function ContentLayout() {
                     </MyLocations>
                 </MyLocation>
                 <WeatherBoxContainer>
-                    <CurrentWeatherBox />
+                    <WeatherBoxLayout weather={currentWeather} />
 
                     <br />
-
-                    <PastWeatherBox />
+                    
+                    <WeatherBoxLayout weather={pastWeather} />
                 </WeatherBoxContainer>
             </ContentForm>
         )

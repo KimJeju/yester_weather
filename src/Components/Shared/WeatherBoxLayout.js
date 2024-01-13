@@ -11,6 +11,8 @@ const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
     display : flex;
     justify-content : space-between;
+
+    transition : 0.5s;
 `
 
 
