@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+// import { useSelector } from "react-redux";
+import WeatherBoxLayout from "../components/shared/WeatherBoxLayout";
 import { useSelector } from "react-redux";
-import WeatherBoxLayout from "../Components/Shared/WeatherBoxLayout";
 
 
 const ContentForm = styled.div`
@@ -48,47 +49,45 @@ const LocationTitle = styled.span`
 
 function ContentLayout() {
 
-    const [location, setLocation] = useState(null);
+    // const [location, setLocation] = useState(null);
 
-    // const currentWeather = useSelector(state => state.weather.value[0]);
+    const pastWeather = useSelector(state => state.currentWeather);
 
-    // const pastWeather = useSelector(state => state.pastWeather.value[0]);
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         // let lat = Math.floor(position.coords.latitude).toString();
+    //         // let lon = Math.floor(position.coords.longitude).toString();
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            // let lat = Math.floor(position.coords.latitude).toString();
-            // let lon = Math.floor(position.coords.longitude).toString();
+    //         let lat = position.coords.latitude.toString();
+    //         let lon = position.coords.longitude.toString();
 
-            let lat = position.coords.latitude.toString();
-            let lon = position.coords.longitude.toString();
+    //         setLocation({
+    //             lat: lat,
+    //             lon: lon
+    //         })
+    //     })
 
-            setLocation({
-                lat: lat,
-                lon: lon
-            })
-        })
+    // }, []);
 
-    }, []);
-
-    if (location != null && currentWeather !== undefined && pastWeather !== undefined) {
+    // if (location != null && currentWeather !== undefined && pastWeather !== undefined) {
         return (
             <ContentForm>
                 <MyLocation>
                     <LocationTitle>현재 내 위치</LocationTitle>
                     <MyLocations>
-                        <span>위도 : {location.lat}</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span>경도 : {location.lon}</span>
+                        {/* <span>위도 : {location.lat}</span> &nbsp;&nbsp;&nbsp;&nbsp; */}
+                        {/* <span>경도 : {location.lon}</span> */}
                     </MyLocations>
                 </MyLocation>
                 <WeatherBoxContainer>
-                    <WeatherBoxLayout weather={currentWeather} />
+                    {/* <WeatherBoxLayout weather={currentWeather} /> */}
                     <br />
-                    <WeatherBoxLayout weather={pastWeather} />
+                    {/* <WeatherBoxLayout weather={pastWeather} /> */}
                 </WeatherBoxContainer>
             </ContentForm>
         )
 
-    }
+    // }
 }
 
 export default ContentLayout
