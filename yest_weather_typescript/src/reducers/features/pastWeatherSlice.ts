@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IWeatherModel } from "../../models/WeatherModel";
+import { IWeatherModel } from "../../components/interfaces/WeatherModel";
 
 
 export const pastWeatherSlice = createSlice({

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { getPastWeather } from "../../reducers/features/pastWeatherSlice";
-import { IWeatherModel } from "../../models/WeatherModel";
+import { IWeatherModel } from "../interfaces/WeatherModel";
 
 
 function PastWeather() {

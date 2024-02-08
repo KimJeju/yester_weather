@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 import { useDispatch } from 'react-redux'
 import { getCurrentWeather } from "../../reducers/features/currentWeatherSlice";
-import { IWeatherModel } from "../../models/WeatherModel";
+import { IWeatherModel } from "../interfaces/WeatherModel";
 
 function CurrentWeather() {
 

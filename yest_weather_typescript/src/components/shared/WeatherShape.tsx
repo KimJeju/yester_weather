@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import UnixTimeConvert from "../utils/UnixTimeConvert"
-import { IWeatherModel } from "../../models/WeatherModel"
+import { IWeatherModel } from "../interfaces/WeatherModel"
 
 const Container = styled.div`
     width : 350px;
@@ -71,10 +71,25 @@ const RightContent = styled.div`
     margin-top : 8px;
 `
 
-function WeatherBoxLayout( weather : IWeatherModel ){
+class Weather implements IWeatherModel {
+    constructor(
+        public main:string,
+        public description : string,
+        public feelLike : number,
+        public temp : number,
+        public icon : string,
+        public dewPoint : number,
+        public sunrise : number,
+        public sunset : number,
+        public date : string
+    ){}
+}
+
+
+function WeatherShape(){
     return (
         <Container>
-            <LeftContent>
+            {/* <LeftContent>
                 <IconInfo>
                     <Img src={weather.icon} color="white" />
                     <span>{weather.main.toUpperCase()}</span>
@@ -90,9 +105,9 @@ function WeatherBoxLayout( weather : IWeatherModel ){
                 <Span>체감온도 : {weather.feelLike}°</Span>
                 <Span>일출 : {UnixTimeConvert(weather.sunrise)}</Span>
                 <Span>일몰 : {UnixTimeConvert(weather.sunset)}</Span>
-            </RightContent>
+            </RightContent> */}
         </Container>
     )
 }
 
-export default WeatherBoxLayout
+export default WeatherShape

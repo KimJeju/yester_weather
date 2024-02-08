@@ -1,8 +1,6 @@
-import React from 'react';
-import './App.css';
 import MainLayout from '../layout/MainLayout';
-import CurrentWeather from '../components/utils/CurrentWeather';
-import { useEffect } from 'react';
+import './App.css';
+
 
 function App() {
 

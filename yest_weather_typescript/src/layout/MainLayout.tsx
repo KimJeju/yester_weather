@@ -15,7 +15,7 @@ const MainForm = styled.div`
     //스타일
     width : 400px;
     height : 800px;
-    background-color : white;
+    background-color : red;
     border : 3px solid black;
     box-shadow: 5px 5px lightgrey;
     border-radius : 30px;
@@ -28,9 +28,6 @@ function MainLayout() {
 
     return (
         <MainForm>
-            <TopLayout />
-
-            <ContentLayout />
         </MainForm>
     )
 }
