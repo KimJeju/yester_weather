@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import WeatherBoxLayout from "../components/shared/WeatherShape";
 import { useSelector } from "react-redux";
 
+//icons
+import { CiLocationArrow1 } from "react-icons/ci";
+import { FaLocationArrow } from "react-icons/fa6";
+
+
 
 const ContentForm = styled.div`
     display: flex;
@@ -26,20 +31,13 @@ const WeatherBoxContainer = styled.div`
 
     width : 400px;
 
-    margin-top : 1vh;
 `
 
 const MyLocation = styled.div`
     display : flex;
-    flex-direction : column;
+    flex-direction : row;
     width : 350px;
-    margin-top : 12px;
-`
-
-const MyLocations = styled.div`
-    // display : flex;
-    // justify-content : space-around;
-    margin-top : 1vh;
+    margin-top : 15px;
 `
 
 const LocationTitle = styled.span`
@@ -73,15 +71,14 @@ function ContentLayout() {
         return (
             <ContentForm>
                 <MyLocation>
-                    <LocationTitle>현재 내 위치</LocationTitle>
-                    <MyLocations>
-                        {/* <span>위도 : {location.lat}</span> &nbsp;&nbsp;&nbsp;&nbsp; */}
-                        {/* <span>경도 : {location.lon}</span> */}
-                    </MyLocations>
+                    {/* <CiLocationArrow1 size="25"/> */}
+                    <FaLocationArrow size="25" />
+                    <LocationTitle>테스트시 테스트구</LocationTitle>
                 </MyLocation>
                 <WeatherBoxContainer>
-                    {/* <WeatherBoxLayout weather={currentWeather} /> */}
-                    <br />
+                    <WeatherBoxLayout/>
+    
+
                     {/* <WeatherBoxLayout weather={pastWeather} /> */}
                 </WeatherBoxContainer>
             </ContentForm>

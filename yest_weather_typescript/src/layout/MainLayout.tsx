@@ -28,6 +28,8 @@ function MainLayout() {
 
     return (
         <MainForm>
+            <TopLayout />
+            <ContentLayout/>
         </MainForm>
     )
 }

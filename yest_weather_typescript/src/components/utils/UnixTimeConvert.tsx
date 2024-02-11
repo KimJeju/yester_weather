@@ -1,4 +1,4 @@
-function UnixTimeConvert(t){
+function UnixTimeConvert(t:number):string{
     var date = new Date(t*1000);
     var hour =  date.getHours();
     var minute = date.getMinutes();
