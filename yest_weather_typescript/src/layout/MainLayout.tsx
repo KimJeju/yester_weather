@@ -14,7 +14,7 @@ const MainForm = styled.div`
 
     //스타일
     width : 400px;
-    background-color : red;
+    // background-color : red;
     box-shadow: 5px 5px lightgrey;
     transition : 0.5s;
 `

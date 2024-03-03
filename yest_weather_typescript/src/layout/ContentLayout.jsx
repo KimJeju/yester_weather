@@ -15,7 +15,7 @@ const ContentForm = styled.div`
     flex-direction: column;
     align-items : center;
 
-    background-color : rgba( 255, 239, 223, 0.5) ;
+    // -color : rgba( 255, 239, 223, 0.5) ;
     // background-color : #F8ECE0 ;
 
     width : 400px;
@@ -77,6 +77,21 @@ function ContentLayout() {
                 </MyLocation>
                 <WeatherBoxContainer>
                     <WeatherBoxLayout/>
+                    <br />
+
+                    <WeatherBoxLayout/>
+                    <br />
+
+                    <WeatherBoxLayout/>
+                    <br />
+
+                    <WeatherBoxLayout/>
+                    <br />
+
+                    <WeatherBoxLayout/>
+                    <br />
+
+                    
     
 
                     {/* <WeatherBoxLayout weather={pastWeather} /> */}
